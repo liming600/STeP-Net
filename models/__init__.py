@@ -12,6 +12,7 @@ from .PointMAE_LSTM import PointMAE_LSTM
 from .PointMAE_Transformer import PointMAE_Transformer
 from .PointMAE_GRU import PointMAE_GRU
 from .PointMAE_1DCNN import PointMAE_1DCNN
+from .PointNetPP_Frame import PointNetPP_Frame
 
 # 3. 定义 __all__ 列表，明确暴露所有可用的模型类
 __all__ = [
@@ -23,4 +24,5 @@ __all__ = [
     'PointMAE_Transformer',
     'PointMAE_GRU',
     'PointMAE_1DCNN',
+    'PointNetPP_Frame',
 ]

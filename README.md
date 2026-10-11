@@ -10,6 +10,7 @@ The code is released under the [MIT License](LICENSE). It includes adaptations o
 | --- | --- |
 | Point-MAE self-supervised pre-training on LIDARHuman26M | `main.py`, `tools/runner_pretrain.py`, `cfgs/pretrain_lidarhuman.yaml`, `datasets/LIDARHuman26MDataset.py` |
 | STeP-Net temporal variants with encoder freezing | `models/PointMAE_{1DCNN,LSTM,GRU,Transformer}.py` and `cfgs/finetune_sequence_*.yaml` |
+| Frame-level ablation baseline | `models/PointNetPP_Frame.py`, `cfgs/finetune_sequence_pointnetpp_frame.yaml`, and `loso_pointnetpp_frame.py` |
 | Training, LOSO 9-fold CV, and evaluation | `main.py`, `loso_main.py`, `confusion_matrix.py`, `eval_activity_confusion.py` |
 | Pre-trained LIDARHuman26M encoder | GitHub Release asset; see [weights/README.md](weights/README.md) |
 | Dataset loaders and format documentation | `datasets/` and [docs/dataset.md](docs/dataset.md) |
@@ -83,6 +84,14 @@ python loso_main.py --config cfgs/finetune_sequence_gru.yaml --finetune_model \
 ```
 
 The other variants use the same command with their respective configuration files. Results, per-fold checkpoints, logs, and TensorBoard events are written under `experiments/`.
+
+## PointNet++ frame-level ablation
+
+The PointNet++ classifier is retained as the paper's non-temporal ablation baseline. It uses the same subject-wise LOSO split but classifies each frame independently:
+
+```bash
+python loso_pointnetpp_frame.py
+```
 
 ## Evaluation
 
