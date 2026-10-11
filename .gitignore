@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+ENV/
+.pytest_cache/
+.mypy_cache/
+
+# Editors and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Data, checkpoints, and experiment outputs (never commit these by default)
+data/
+datasets/**/raw/
+experiments/
+outputs/
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.tfevents.*
+
+# Build products for CUDA/PyTorch extensions
+build/
+dist/
+*.egg-info/
+extensions/**/build/
+extensions/**/dist/
+
+# Local research artifacts
+tmp/
+tmp_*/
+*.log
+run.log
+log_*.txt
+loso_overfit_nofrozen.txt
+*.png
+*.jpg
+*.jpeg
+*.pdf
+
+# Local configuration and secrets
+.env
+.env.*
+*.local.yaml
+*.local.yml
+
+# Empty files created by a malformed local command and one-off local configs
+/--config
+/--ckpts
+/--exp_name
+/--finetune_model
+/python benchmark_seq_len.py
+/config.yaml
+/finetune_overfit.yaml
+
+# Superseded private workflow notes (the public documentation is in docs/)
+/DATASET.md
+/RUN_INSTRUCTIONS.md
+/TASK.md
+/FALL_RATIO_9FOLD_NOTES.md

@@ -1,0 +1,68 @@
+# ===============================================================
+# ===          用于时序跌倒检测的微调配置 (1D-CNN)            ===
+# ===============================================================
+
+optimizer:
+  type: AdamW
+  kwargs:
+    lr: 0.0005 # 1D-CNN通常对学习率不太敏感，可以从一个标准值开始
+    weight_decay: 0.05
+
+scheduler:
+  type: CosLR
+  kwargs:
+    epochs: 100
+    initial_epochs: 5
+
+dataset:
+  train:
+    _base_: cfgs/dataset_configs/FallSequenceDataset.yaml
+    others:
+      subset: 'train'
+      sequence_length: 16
+      stride: 4
+      bs: 16
+  val:
+    _base_: cfgs/dataset_configs/FallSequenceDataset.yaml
+    others:
+      subset: 'val'
+      sequence_length: 16
+      stride: 16
+      bs: 32
+  test:
+    _base_: cfgs/dataset_configs/FallSequenceDataset.yaml
+    others:
+      subset: 'test'
+      sequence_length: 16
+      stride: 16
+      bs: 16
+
+model:
+  NAME: PointMAE_1DCNN # <-- 指定使用我们的新模型
+  freeze_encoder: true
+  num_classes: 2
+
+  # 内部Point-MAE编码器的配置
+  point_mae_config:
+    NAME: PointTransformer
+    trans_dim: 384
+    depth: 12
+    drop_path_rate: 0.3
+    cls_dim: 2
+    num_heads: 6
+    group_size: 32
+    num_group: 64
+    encoder_dims: 384
+
+  # 1D-CNN时序模块的配置
+  cnn_config:
+    # 定义一个包含两层卷积的网络
+    channels: [256, 128] # 第一层输出256通道，第二层输出128通道
+    kernel_sizes: [3, 3] # 两层都使用大小为3的卷积核
+
+# 顶层参数
+total_bs: 16
+max_epoch: 100
+grad_norm_clip: 10
+npoints: 1024
+step_per_update: 1

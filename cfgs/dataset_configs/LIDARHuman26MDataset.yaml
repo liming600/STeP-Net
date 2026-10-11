@@ -1,0 +1,5 @@
+# Dataset configuration for Point-MAE pre-training on LIDARHuman26M.
+NAME: LIDARHuman26MDataset
+# Set this to an absolute path on your machine. Dataset files are not public.
+DATA_PATH: /absolute/path/to/LIDARHuman26M
+N_POINTS: 1024

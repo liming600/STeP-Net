@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the accompanying paper when available and the original Point-MAE paper."
+title: "STeP-Net: Spatio-Temporal Point-Cloud Network for Fall Detection"
+type: software
+license: MIT
+references:
+  - type: article
+    title: "Masked Autoencoders for Point Cloud Self-supervised Learning"
+    authors:
+      - family-names: Pang
+        given-names: Yatian
+      - family-names: Wang
+        given-names: Wenxiao
+      - family-names: Tay
+        given-names: Francis E. H.
+      - family-names: Liu
+        given-names: Wei
+      - family-names: Tian
+        given-names: Yonghong
+      - family-names: Yuan
+        given-names: Li
+    year: 2022
+    doi: 10.1007/978-3-031-19815-1_35
