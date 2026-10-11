@@ -3,6 +3,7 @@ message: "If you use this code, please cite the accompanying paper when availabl
 title: "STeP-Net: Spatio-Temporal Point-Cloud Network for Fall Detection"
 type: software
 license: MIT
+repository-code: "https://github.com/liming600/STeP-Net"
 references:
   - type: article
     title: "Masked Autoencoders for Point Cloud Self-supervised Learning"
