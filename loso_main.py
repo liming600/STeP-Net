@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import torch
 import os
-import shutil
 
 from tools.runner_finetune import run_net as finetune, test_net
 from utils import parser, dist_utils, misc
@@ -27,18 +26,9 @@ def main():
         args.distributed = True
         args.local_rank = int(os.environ.get('LOCAL_RANK', 0))
 
-    # --- [核心修复 - 鲁棒版] ---
-    # 通过检查配置文件中是否存在 'sequence_length' 来判断任务类型
-    temp_config_for_check = get_config(args, logger=get_root_logger())
-    is_sequence_task = 'sequence_length' in temp_config_for_check.dataset.train.others
-
     logger = get_logger(args.log_name)
-    if is_sequence_task:
-        print_log('Task type detected: Sequence-based (found "sequence_length" in config)', logger=logger)
-        base_dataset_name = 'SubjectSplitSequenceDataset'
-    else:
-        print_log('Task type detected: Single-frame-based', logger=logger)
-        base_dataset_name = 'SubjectSplitDataset'
+    base_dataset_name = 'SubjectSplitSequenceDataset'
+    print_log('Using the sequence-based LOSO protocol.', logger=logger)
 
     TOTAL_SUBJECTS = 9
     all_fold_metrics = []

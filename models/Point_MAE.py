@@ -375,7 +375,6 @@ class Point_MAE(nn.Module):
             self.loss_func = ChamferDistanceL2().cuda()
         else:
             raise NotImplementedError
-            # self.loss_func = emd().cuda()
 
 
     def forward(self, pts, vis = False, **kwargs):

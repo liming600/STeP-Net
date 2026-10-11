@@ -16,7 +16,7 @@ Suggested first commit:
 ```bash
 git init
 git add README.md LICENSE CITATION.cff CONTRIBUTING.md .gitignore \
-  main.py loso_main.py models datasets tools utils cfgs extensions segmentation docs requirements.txt point-mae-environment.yml
+  main.py loso_main.py models datasets tools utils cfgs extensions docs requirements.txt weights
 git status
 git commit -m "Initial public release"
 ```

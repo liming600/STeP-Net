@@ -29,5 +29,3 @@ def build_dataset_from_cfg(cfg, default_args=None):
     result = DATASETS.build(cfg, default_args=default_args)
     print(f"[DEBUG build_dataset_from_cfg] Built dataset: {type(result)}, length: {len(result)}")
     return result
-
-# !!! 确保这里没有其他任何 from .LIDARHuman... 或 from .ModelNet... 的导入 !!!

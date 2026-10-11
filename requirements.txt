@@ -5,10 +5,13 @@ matplotlib
 numpy
 open3d==0.17.0
 opencv-python
+plyfile
 pyyaml
 scipy
+scikit-learn
 tensorboardX
 timm==0.4.5
 tqdm
 transforms3d
 termcolor
+torchvision

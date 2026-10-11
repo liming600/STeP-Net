@@ -1,6 +1,0 @@
-# 注意这里的NAME要和Python类名完全一致
-NAME: FallDataset
-# Set this to an absolute path on your machine. Dataset files are not public.
-DATA_PATH: /absolute/path/to/fall_detection_dataset
-N_POINTS: 1024
-NUM_CATEGORY: 2 # 关键: 2个类别 (日常/跌倒)```

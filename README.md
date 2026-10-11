@@ -19,8 +19,9 @@ The code is released under the [MIT License](LICENSE). It includes adaptations o
 The project was developed with Python 3.8, PyTorch 1.x, CUDA, and Linux. Install a CUDA-enabled PyTorch build compatible with the local driver, then create the environment and install the remaining packages:
 
 ```bash
-conda env create -f point-mae-environment.yml
-conda activate point-mae
+conda create -n step-net python=3.8 -y
+conda activate step-net
+# Install the PyTorch build matching your CUDA driver from pytorch.org.
 pip install -r requirements.txt
 ```
 
@@ -28,7 +29,6 @@ Build the required CUDA extensions from the repository root:
 
 ```bash
 cd extensions/chamfer_dist && python setup.py install --user
-cd ../emd && python setup.py install --user
 cd ../..
 pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
 ```
@@ -103,4 +103,4 @@ python eval_activity_confusion.py --config cfgs/finetune_sequence_gru.yaml \
 
 ## Reproducibility and release checks
 
-See [docs/reproducibility.md](docs/reproducibility.md) for the reporting protocol and [docs/release-checklist.md](docs/release-checklist.md) before publishing. Generated data, logs, checkpoints, figures, and local configurations are deliberately excluded from Git.
+See [docs/reproducibility.md](docs/reproducibility.md) for the reporting protocol and [docs/release-checklist.md](docs/release-checklist.md) before publishing. The repository intentionally contains only the STeP-Net training and evaluation path; generated data, logs, checkpoints, figures, and local configurations are excluded from Git.

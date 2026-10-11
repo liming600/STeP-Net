@@ -124,23 +124,11 @@ def run_net(args, config, train_writer=None, val_writer=None):
             npoints = config.dataset.train.others.npoints
             dataset_name = config.dataset.train._base_.NAME
 
-            # ====================================================================
-            # ---                      核心修改在这里                        ---
-            # ====================================================================
-            if dataset_name == 'ShapeNet':
-                points = data.cuda()
-            elif dataset_name == 'ModelNet':
-                points = data[0].cuda()
-                points = misc.fps(points, npoints)
-            elif dataset_name == 'LIDARHuman26MDataset':  # 为我们的数据集添加新分支
-                # 我们的数据格式和ModelNet一样，是 data[0]
-                # 但由于点数已经统一，不需要再做fps采样，可以提高效率
+            if dataset_name == 'LIDARHuman26MDataset':
                 points = data[0].cuda()
             else:
-                raise NotImplementedError(f'Train phase do not support {dataset_name}')
-            # ====================================================================
-            # ---                        修改结束                          ---
-            # ====================================================================
+                raise NotImplementedError(
+                    'STeP-Net pre-training supports LIDARHuman26MDataset only.')
 
             assert points.size(1) == npoints
             points = train_transforms(points)

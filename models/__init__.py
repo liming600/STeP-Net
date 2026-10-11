@@ -13,9 +13,6 @@ from .PointMAE_Transformer import PointMAE_Transformer
 from .PointMAE_GRU import PointMAE_GRU
 from .PointMAE_1DCNN import PointMAE_1DCNN
 
-# 导入外部基线模型 (PointNet++ 帧级分类器)
-from .PointNetPP_Frame import PointNetPP_Frame
-
 # 3. 定义 __all__ 列表，明确暴露所有可用的模型类
 __all__ = [
     'build_model_from_cfg',
@@ -26,5 +23,4 @@ __all__ = [
     'PointMAE_Transformer',
     'PointMAE_GRU',
     'PointMAE_1DCNN',
-    'PointNetPP_Frame',
 ]
